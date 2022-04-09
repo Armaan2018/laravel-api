@@ -1,0 +1,22 @@
+    computed: {
+        // A computed property that holds only those data that match the searchString.
+        filteredData: function () {
+            var search_array = this.allUsers,
+                searchString = this.searchString;
+
+            if(!searchString){
+                return search_array;
+            }
+
+            searchString = searchString.trim().toLowerCase();
+
+            search_array = search_array.filter(item => {
+                if(item.name.toLowerCase().indexOf(searchString) !== -1){
+                    return item;
+                }
+            })
+
+            // Return an array with the filtered data.
+            return search_array;
+        }
+    },
